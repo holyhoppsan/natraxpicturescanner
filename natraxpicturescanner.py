@@ -5,19 +5,26 @@ import argparse
 import cv2
 
 argument_parser = argparse.ArgumentParser()
-argument_parser.add_argument("-i", "--image", help="path to the image file")
+argument_parser.add_argument(
+    "-i", "--image", required=True, help="path to the image file"
+)
 argument_parser.add_argument(
     "-c", "--coords", help="comma separated lists of source points"
 )
 
 arguments = vars(argument_parser.parse_args())
 
-image = cv2.imread(arguments["image"])
+if arguments["coords"] is not None:
 
-points = np.array(eval(arguments["coords"]), dtype="float32")
+    image = cv2.imread(arguments["image"])
 
-warped = four_point_transform(image, points)
+    points = np.array(eval(arguments["coords"]), dtype="float32")
 
-cv2.imshow("Original", image)
-cv2.imshow("Warped", warped)
-cv2.waitKey(0)
+    warped = four_point_transform(image, points)
+
+    cv2.imshow("Original", image)
+    cv2.imshow("Warped", warped)
+    cv2.waitKey(0)
+
+else:
+    print("No coords specified")
