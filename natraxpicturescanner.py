@@ -31,7 +31,7 @@ if arguments["coords"] is not None:
 
 else:
     # performing edge detection
-    print("Performing edge detevtion")
+    print("Performing edge detection")
 
     image = cv2.imread(arguments["image"])
     ratio = image.shape[0] / 500.0
