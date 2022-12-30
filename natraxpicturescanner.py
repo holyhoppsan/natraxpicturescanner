@@ -1,3 +1,4 @@
+from flask import Flask, render_template
 from transform import four_point_transform
 from skimage.filters import threshold_local
 
@@ -5,6 +6,14 @@ import numpy as np
 import argparse
 import cv2
 import helpers
+
+# Initialization
+app = Flask(__name__)
+
+
+@app.route("/")
+def index():
+    return render_template("index.html")
 
 
 def parse_args():
@@ -102,4 +111,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    app.run(host="0.0.0.0", port=8001, threaded=True)
