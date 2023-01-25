@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, Response, jsonify, request
 from transform import four_point_transform
 from skimage.filters import threshold_local
 
@@ -14,6 +14,19 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     return render_template("index.html")
+
+
+@app.route("/capture_status", methods=["POST"])
+def capture_status():
+    print("Entered the capture status function")
+
+    json = request.get_json()
+
+    status = json["status"]
+
+    if status == "true":
+        # video_camera.capture_frame()
+        return jsonify(result="done")
 
 
 def parse_args():
