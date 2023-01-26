@@ -29,6 +29,27 @@ def capture_status():
         return jsonify(result="done")
 
 
+def image_frame():
+    print("callling image frame")
+
+    # if frame is not None:
+    #   yield (b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
+
+
+@app.route("/image_viewer")
+def image_viewer():
+    return Response(image_frame(), mimetype="multipart/x-mixed-replace; boundary=frame")
+
+
+def video_frame():
+    print("calling video frame")
+
+
+@app.route("/video_viewer")
+def video_viewer():
+    return Response(video_frame(), mimetype="mulitpart/x-mixed-replace; boundary=frame")
+
+
 def parse_args():
     argument_parser = argparse.ArgumentParser()
     argument_parser.add_argument(
