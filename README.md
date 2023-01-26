@@ -9,3 +9,5 @@ https://pyimagesearch.com/2014/08/25/4-point-opencv-getperspective-transform-exa
 * https://github.com/yushulx/web-document-scanner
 * https://www.restapitutorial.com/
 * https://stackoverflow.com/questions/55079926/do-i-need-to-use-methods-get-post-in-app-route
+* https://www.programiz.com/python-programming/property
+* https://towardsdatascience.com/how-to-use-decorators-in-python-by-example-b398328163b
